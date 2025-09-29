@@ -23,4 +23,4 @@ setup-bazelisk:
 	chmod +x ~/bin/bazel
 
 
-.PHONY: default msys_special build check setup-bazelisk
+.PHONY: default msys_special build run check setup-bazelisk
