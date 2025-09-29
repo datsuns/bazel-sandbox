@@ -7,12 +7,17 @@ default: msys_special build
 msys_special:
 	export MSYS2_ARG_CONV_EXCL="*"
 
-build:
+setup:
 	echo $(TARGET_BAZEL_VERSION) > .bazelversion
-	USE_BAZEL_VERSION=$(TARGET_BAZEL_VERSION) bazel build //src:hello
+
+build:
+	bazel build //src:hello
 
 run:
-	USE_BAZEL_VERSION=$(TARGET_BAZEL_VERSION) bazel run //src:hello
+	bazel run //src:hello
+
+test:
+	bazel test //test:hello_test
 
 check:
 	bazel info workspace
@@ -23,4 +28,4 @@ setup-bazelisk:
 	chmod +x ~/bin/bazel
 
 
-.PHONY: default msys_special build run check setup-bazelisk
+.PHONY: default msys_special setup build run test check setup-bazelisk
